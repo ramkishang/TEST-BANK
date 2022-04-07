@@ -1,0 +1,168 @@
+<div class="container">
+    <div class="card main-card">
+        <form [formGroup]="customerCreateForm">
+            <div class="row card custom-card">
+                <span class="heading">Personal Details</span>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Id Number</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Id Number" type="text" formControlName="idNo" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['idNo'].errors?.required">Id Number Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <mat-icon matPrefix>account_box</mat-icon>
+                            <input matInput placeholder="Name of customer" type="text" formControlName="name" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['name'].errors?.required">Name Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Account No.</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Bank Account Number" type="text" formControlName="bankAccountNo" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['bankAccountNo'].errors?.required">Bank account no. Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Bank Account Balance</mat-label>
+                            <mat-icon matPrefix>account_balance_wallet</mat-icon>
+                            <input matInput placeholder="Id Number" type="number" formControlName="bankAccountBalance" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['bankAccountBalance'].errors?.required">Bank bccount balance Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>login Id</mat-label>
+                            <mat-icon matPrefix>account_box</mat-icon>
+                            <input matInput placeholder="Login Id of customer" type="text" formControlName="loginId" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['loginId'].errors?.required">Login Id Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <mat-icon matPrefix>email</mat-icon>
+                            <input matInput placeholder="Email Address" type="email" formControlName="email" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['email'].errors?.required">Email Required !</mat-error>
+                            <mat-error *ngIf="customerCreateForm.controls['email'].errors?.pattern">Email is not valid !</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4" *ngIf="!isUpdate">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Account Type</mat-label>
+                            <mat-icon matPrefix>account_box</mat-icon>
+                            <mat-select formControlName="type" required>
+                                <mat-option *ngFor="let account of accounts" [value]="account.value">
+                                  {{account?.type}}
+                                </mat-option>
+                              </mat-select>
+                            <mat-error *ngIf="customerCreateForm.controls['type'].errors?.required">Account type Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <mat-icon matPrefix>lock</mat-icon>
+                            <input matInput placeholder="Password" type="password" [type]="hide ? 'password' : 'text'"
+                              formControlName="password" required autocomplete="off" />
+                            <mat-icon matSuffix (click)="hide = !hide">{{
+                              hide ? "visibility_off" : "visibility"
+                              }}</mat-icon>
+                            <mat-error *ngIf="customerCreateForm.controls['password'].errors?.required">Password required !</mat-error>
+                            <mat-error *ngIf="customerCreateForm.controls['password'].errors?.minlength">Minimum 8 characters required !
+                            </mat-error>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+
+            <div class="row card custom-card sub-card">
+                <span class="heading">Address Details</span>
+                <div class="row row-border">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Address Line 1</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Address Line 1" type="text" formControlName="address1" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['address1'].errors?.required">Address line 1 Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Address Line 2</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Address line 2" type="text" formControlName="address2" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['address2'].errors?.required">Address line 2 Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Country</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Country" type="text" formControlName="country" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['country'].errors?.required">Country Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row row-border">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>State</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="State" type="text" formControlName="state" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['state'].errors?.required">State Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>City</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="City" type="text" formControlName="city" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['city'].errors?.required">City Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Postcode</mat-label>
+                            <mat-icon matPrefix>assignment</mat-icon>
+                            <input matInput placeholder="Postcode" type="text" formControlName="postcode" required
+                            autocomplete="off" />
+                            <mat-error *ngIf="customerCreateForm.controls['postcode'].errors?.required">Postcode Required !</mat-error>
+                            <mat-error *ngIf="customerCreateForm.controls['postcode'].errors?.minlength || customerCreateForm.controls['postcode'].errors?.maxlength"> 6 characters required !</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+                        
+            <div class="button-row">
+                <input type="Submit" value="Submit" *ngIf="!isUpdate" (click)="createCustomer()" [disabled]="!(customerCreateForm.valid || submitted)" #submitButton>
+                <input type="Submit" value="Update" *ngIf="isUpdate" (click)="updateCustomer()" [disabled]="!(customerCreateForm.valid || submitted)" #submitButton>
+            </div>
+        </form>
+    </div>
+</div>

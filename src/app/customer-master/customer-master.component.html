@@ -1,0 +1,64 @@
+<div class="mat-elevation-z8">
+    <div class="row filter-row">
+        <mat-form-field appearance="standard">
+            <mat-label>Filter Data</mat-label>
+            <input matInput placeholder="Search columns" (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+    </div>
+    
+    <table mat-table [dataSource]="customerList">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Account number Column -->
+        <ng-container matColumnDef="bankAccountNo">
+            <th mat-header-cell *matHeaderCellDef> Bank Account Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.bankAccountNo}} </td>
+        </ng-container>
+
+        <!-- Account balance Column -->
+        <ng-container matColumnDef="bankAccountBalance">
+            <th mat-header-cell *matHeaderCellDef> Bank Account Balance </th>
+            <td mat-cell *matCellDef="let element"> {{element.bankAccountBalance}} </td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> City</th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <!-- PostcodeColumn -->
+        <ng-container matColumnDef="postcode">
+            <th mat-header-cell *matHeaderCellDef> Postcode</th>
+            <td mat-cell *matCellDef="let element"> {{element.postcode}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element" >
+                <button mat-button (click)="updateCustomer(element?.id)"><mat-icon>edit</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons  aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

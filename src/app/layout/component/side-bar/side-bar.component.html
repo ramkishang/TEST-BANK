@@ -1,0 +1,20 @@
+<mat-nav-list>
+    <div class="py-4 logo">
+        <mat-icon class="bank-icon">account_balance</mat-icon>
+        <h2 matSubheader class="mt-2">Test Bank</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- If admin -->
+    <div *ngIf="userRole == 1">
+        <a mat-list-item routerLink="/home" routerLinkActive="list-item-active"><mat-icon>home</mat-icon>&nbsp;Home</a>
+        <a mat-list-item routerLink="/create" routerLinkActive="list-item-active"><mat-icon>library_add</mat-icon>&nbsp;Create Customer</a>
+        <a mat-list-item routerLink="/customer" routerLinkActive="list-item-active"><mat-icon>supervisor_account</mat-icon>&nbsp;Customer Master</a>
+    </div>
+    <!-- If Customer -->
+    <div *ngIf="userRole == 0">
+        <a mat-list-item routerLink="/home" routerLinkActive="list-item-active"><mat-icon>home</mat-icon>&nbsp;Home</a>
+        <a mat-list-item routerLink="account" routerLinkActive="list-item-active"><mat-icon>dvr</mat-icon>&nbsp;My Account</a>
+        <a mat-list-item routerLink="transactions" routerLinkActive="list-item-active"><mat-icon>flash_on</mat-icon>&nbsp; Trasactions</a>
+        <a mat-list-item routerLink="send-money" routerLinkActive="list-item-active"><mat-icon>send</mat-icon>&nbsp;Send Money</a>
+    </div>
+</mat-nav-list>

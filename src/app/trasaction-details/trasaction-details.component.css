@@ -1,0 +1,9 @@
+.custom-card{
+    background-color: rgb(205 210 213);
+    box-shadow: 5px 10px #888888;
+    padding:20px;
+}
+.main-card{
+    background-color: rgb(205 210 213);
+    padding:20px;
+}

@@ -1,0 +1,19 @@
+.main-card{
+    background-color: rgb(205 210 213);
+    padding:20px;
+}
+.balance-icon{
+    font-size: 80px;
+    color:#786a6f;
+}
+.customer-details{
+    margin-top: 30px;
+}
+.update-profile-icon{
+    position: absolute;
+    float: right;
+    right: 20px;
+    border-radius: 23px;
+    color:#ee5283;
+    cursor: pointer;
+}

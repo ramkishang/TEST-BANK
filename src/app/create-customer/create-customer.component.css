@@ -1,0 +1,32 @@
+input[type="submit"]{
+    background: #ff4584;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border:none;
+    padding:10px;
+    border-radius: 30px;
+}
+.custom-card{
+    background-color: rgb(205 210 213);
+    box-shadow: 5px 10px #888888;
+    padding:20px;
+}
+.main-card{
+    background-color: rgb(205 210 213);
+    padding:20px;
+}
+.heading{
+    color: #ff4584;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.button-row{
+    text-align: center;
+    margin-top: 20px;
+}
+.sub-card{
+    margin-top:20px;
+}

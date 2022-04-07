@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row card custom-card avail-bal">
+        <h2>Available Balance: {{customerDetails.bankAccountBalance}}</h2>
+    </div>
+    <div class="card main-card">
+        <form [formGroup]="trasansactionForm">
+            <div class="row card custom-card">
+                <span class="heading">Sender Details</span>
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Recipient</mat-label>
+                            <mat-icon matPrefix>account_circle</mat-icon>
+                            <mat-select formControlName="recipient" required>
+                                <mat-option *ngFor="let customer of customerList" [value]="customer.bankAccountNo">
+                                  {{customer?.name}}
+                                </mat-option>
+                              </mat-select>
+                            <mat-error *ngIf="trasansactionForm.controls['recipient'].errors?.required">Recepient Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Amount</mat-label>
+                            <mat-icon matPrefix>account_balance_wallet</mat-icon>
+                            <input matInput placeholder="Amount" type="number" formControlName="amount" required
+                            autocomplete="off" (change)="availBalance($event)"/>
+                            <mat-error *ngIf="trasansactionForm.controls['amount'].errors?.required">Amount Required !</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="button-row">
+                            <button type="Submit" (click)="sendMoney()" [disabled]="!(trasansactionForm.valid || submitted)" class="submitButton"><mat-icon class="send-icon">send</mat-icon></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

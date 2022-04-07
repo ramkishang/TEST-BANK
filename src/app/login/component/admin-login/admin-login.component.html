@@ -1,0 +1,46 @@
+<section>
+    <div class="contentBx">
+        <div class="formBx">
+            <div class="logoBx" fxlayoutalign="center center">
+                <mat-icon class="bank-icon">account_balance</mat-icon>
+            </div>
+            <div class="row bank-heading" >
+               <h3>Test Bank</h3>
+               <h2>{{title}}</h2>
+            </div>
+            <form [formGroup]="loginForm">
+                <mat-form-field appearance="outline">
+                <mat-label>Login Id</mat-label>
+                    <mat-icon matPrefix>account_box</mat-icon>
+                    <input matInput placeholder="Login Id" type="text" formControlName="loginId" required
+                    autocomplete="off" />
+                    <mat-error *ngIf="loginForm.controls['loginId'].errors?.required">Login Id Required !</mat-error>
+                </mat-form-field>
+               
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <mat-icon matPrefix>lock</mat-icon>
+                  <input matInput placeholder="Password" type="password" [type]="hide ? 'password' : 'text'"
+                    formControlName="password" required autocomplete="off" />
+                  <mat-icon matSuffix (click)="hide = !hide">{{
+                    hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  <mat-error *ngIf="loginForm.controls['password'].errors?.required">Password required !</mat-error>
+                  <mat-error *ngIf="loginForm.controls['password'].errors?.minlength">Minimum 8 characters required !
+                  </mat-error>
+                </mat-form-field>
+                <div class="inputBx">
+                    <input type="Submit" value="connect with us" (click)="login()" [disabled]="!(loginForm.valid || submitted)" #submitButton>
+                </div>
+                <div class="inputBx">
+                    <mat-error>
+                        <small> {{ errorMessage }}</small>
+                    </mat-error>
+                </div>
+                <div class="row inputBx-row">
+                    <p><a routerLink="/login">Customer</a> Login.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

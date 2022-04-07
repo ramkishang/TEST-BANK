@@ -1,0 +1,23 @@
+.mat-toolbar{
+    position: sticky;
+    top:0;
+    z-index:100;
+    background-color: #cdd2d5;
+}
+li{
+    list-style: none;
+}
+button{
+    border:none;
+    outline:none;
+    background: transparent;
+}
+.user{
+    font-size: 14px;
+}
+.user-image-icon{
+    padding: 0px 34px 9px 2px;
+    font-size: 34px;
+    top: -6px;
+    position: relative;
+}
